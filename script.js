@@ -453,8 +453,7 @@ function disableAnimations() {
     if (intervals.matrix) clearInterval(intervals.matrix);
     if (intervals.dashboard) clearInterval(intervals.dashboard);
     if (intervals.glitch) clearInterval(intervals.glitch);
-    
-    console.log('Reduced motion mode: Animations disabled');
+    if (intervals.cursor) clearInterval(intervals.cursor);
 }
 
 function enableAnimations() {
@@ -462,6 +461,35 @@ function enableAnimations() {
     const canvas = document.getElementById('matrix-canvas');
     if (canvas) {
         canvas.style.display = 'block';
+        
+        // Restart matrix animation if not already running
+        if (!intervals.matrix) {
+            const ctx = canvas.getContext('2d');
+            const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+            const fontSize = 14;
+            const columns = canvas.width / fontSize;
+            const drops = Array(Math.floor(columns)).fill(1);
+            
+            function drawMatrix() {
+                ctx.fillStyle = 'rgba(10, 10, 15, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.fillStyle = '#00ffff';
+                ctx.font = fontSize + 'px monospace';
+                
+                for (let i = 0; i < drops.length; i++) {
+                    const text = chars[Math.floor(Math.random() * chars.length)];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                    
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+            
+            intervals.matrix = setInterval(drawMatrix, 50);
+        }
     }
     
     // Restart intervals if they were stopped
