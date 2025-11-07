@@ -225,6 +225,11 @@ body {
     transform: translateY(-2px);
 }
 
+.nav-link:focus {
+    outline: 2px solid var(--neon-cyan);
+    outline-offset: 2px;
+}
+
 /* Container */
 .container {
     max-width: 1400px;
@@ -581,6 +586,8 @@ body {
     transition: all 0.3s ease;
     color: var(--neon-cyan);
     font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
 }
 
 .key:hover {
@@ -588,6 +595,11 @@ body {
     color: var(--dark-bg);
     box-shadow: 0 0 20px var(--neon-cyan);
     transform: scale(1.1);
+}
+
+.key:focus {
+    outline: 2px solid var(--neon-pink);
+    outline-offset: 2px;
 }
 
 .access-display {
@@ -1063,6 +1075,24 @@ body {
 
 .section {
     animation: fadeIn 0.6s ease-out;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .glitch,
+    .scanline,
+    .progress-fill,
+    .section {
+        animation: none !important;
+    }
+    
+    .section,
+    .nav-link,
+    .district-card,
+    .food-card,
+    .tip-card {
+        transition: none !important;
+    }
 }
 
 /* Additional cyberpunk effects */
