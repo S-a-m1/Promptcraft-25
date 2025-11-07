@@ -2,7 +2,7 @@
    NEON NEXUS - CYBERPUNK STYLESHEET
    ============================================ */
 
-/* Import funky font */
+/* Import Orbitron and Share Tech Mono fonts from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&display=swap');
 
 /* CSS Variables for Theme Colors */
@@ -419,7 +419,7 @@ body::before {
         var(--neon-blue),
         var(--neon-cyan)
     );
-    background-size: 400% 400%;
+    background-size: 300% 300%;
     border-radius: 8px;
     z-index: -1;
     opacity: 0.4;

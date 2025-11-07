@@ -515,18 +515,30 @@ function enableAnimations() {
 // ASCII TEXT EFFECTS
 // ============================================
 function initializeASCIITextEffects() {
+    // Check if reduced motion is preferred
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+        return; // Skip ASCII animations if reduced motion is preferred
+    }
+    
     const sectionTitles = document.querySelectorAll('.section-title');
     
     sectionTitles.forEach((title, index) => {
         const originalText = title.textContent;
         const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*+-=<>[]{}|/\\';
+        let currentInterval = null;
         
         // Add hover effect for ASCII scramble
         title.addEventListener('mouseenter', function() {
+            // Clear any existing interval
+            if (currentInterval) {
+                clearInterval(currentInterval);
+            }
+            
             let iterations = 0;
             const maxIterations = originalText.length;
             
-            const asciiInterval = setInterval(() => {
+            currentInterval = setInterval(() => {
                 title.textContent = originalText
                     .split('')
                     .map((char, idx) => {
@@ -541,10 +553,20 @@ function initializeASCIITextEffects() {
                 iterations += 1/3;
                 
                 if (iterations >= maxIterations) {
-                    clearInterval(asciiInterval);
+                    clearInterval(currentInterval);
+                    currentInterval = null;
                     title.textContent = originalText;
                 }
             }, 30);
+        });
+        
+        // Clear interval on mouseleave
+        title.addEventListener('mouseleave', function() {
+            if (currentInterval) {
+                clearInterval(currentInterval);
+                currentInterval = null;
+                title.textContent = originalText;
+            }
         });
         
         // Staggered reveal animation on page load
