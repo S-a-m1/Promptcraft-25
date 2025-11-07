@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Nexus - Welcome to the Grid</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Header with glitch effect -->
+    <header class="main-header">
+        <div class="glitch-container">
+            <h1 class="glitch" data-text="NEON NEXUS">NEON NEXUS</h1>
+        </div>
+        <p class="tagline">// Welcome to the Grid, Netrunner</p>
+        <div class="scanline"></div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <a href="#lore" class="nav-link">LORE</a>
+        <a href="#data-dash" class="nav-link">DATA_DASH</a>
+        <a href="#access" class="nav-link">ACCESS_PANEL</a>
+        <a href="#districts" class="nav-link">DISTRICTS</a>
+        <a href="#slang" class="nav-link">SLANG_DB</a>
+        <a href="#food" class="nav-link">FOOD_STALLS</a>
+        <a href="#survival" class="nav-link">SURVIVAL</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        
+        <!-- Lore Section -->
+        <section id="lore" class="section">
+            <div class="section-header">
+                <h2 class="section-title">// LORE.EXE</h2>
+                <div class="terminal-line"></div>
+            </div>
+            <div class="lore-content">
+                <div class="lore-block">
+                    <h3>Year: 2087</h3>
+                    <p>After the Great Collapse of 2042, mega-corporations rose from the ashes of failed governments. Neon Nexus emerged as a sprawling metropolis built on the bones of old-world San Angeles, a monument to unchecked capitalism and technological advancement.</p>
+                </div>
+                <div class="lore-block">
+                    <h3>The Corporate Wars</h3>
+                    <p>Three mega-corps control the city: SynthCorp (cybernetic enhancements), NeuroLink (neural implants), and Grid Systems (infrastructure). Their cold war keeps the streets violent and opportunities abundant for those willing to risk it all.</p>
+                </div>
+                <div class="lore-block">
+                    <h3>Life in the Nexus</h3>
+                    <p>The city never sleeps. Neon lights illuminate endless rain-soaked streets. Hackers, mercenaries, and corpo-rats all fight for their slice of the pie. The strong survive, the weak get zeroed. Welcome home, choomba.</p>
+                </div>
+                <div class="ascii-art">
+                    <pre>
+    ╔═══════════════════════════╗
+    ║   SYSTEM INITIALIZED      ║
+    ║   NEURAL LINK: ACTIVE     ║
+    ║   THREAT LEVEL: MAXIMUM   ║
+    ╚═══════════════════════════╝
+                    </pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Dashboard Section -->
+        <section id="data-dash" class="section">
+            <div class="section-header">
+                <h2 class="section-title">// DATA_DASHBOARD.SYS</h2>
+                <div class="terminal-line"></div>
+            </div>
+            <div class="dashboard-grid">
+                <div class="dash-panel">
+                    <h3 class="panel-title">SYSTEM STATUS</h3>
+                    <div class="stat-bar">
+                        <span class="stat-label">GRID INTEGRITY</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 87%"></div>
+                        </div>
+                        <span class="stat-value">87%</span>
+                    </div>
+                    <div class="stat-bar">
+                        <span class="stat-label">SECURITY BREACH</span>
+                        <div class="progress-bar danger">
+                            <div class="progress-fill" style="width: 34%"></div>
+                        </div>
+                        <span class="stat-value">34%</span>
+                    </div>
+                    <div class="stat-bar">
+                        <span class="stat-label">NEURAL TRAFFIC</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 92%"></div>
+                        </div>
+                        <span class="stat-value">92%</span>
+                    </div>
+                </div>
+                
+                <div class="dash-panel">
+                    <h3 class="panel-title">POPULATION METRICS</h3>
+                    <div class="metric">
+                        <span class="metric-label">CITIZENS</span>
+                        <span class="metric-value">12.4M</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">AUGMENTED</span>
+                        <span class="metric-value">89.3%</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">NETRUNNERS</span>
+                        <span class="metric-value">47.2K</span>
+                    </div>
+                </div>
+
+                <div class="dash-panel">
+                    <h3 class="panel-title">THREAT ANALYSIS</h3>
+                    <div class="threat-list">
+                        <div class="threat-item critical">⚠ CORPO RAID - SECTOR 7</div>
+                        <div class="threat-item high">⚠ CYBER-ATTACK - GRID-09</div>
+                        <div class="threat-item medium">⚠ GANG WAR - LOWTOWN</div>
+                        <div class="threat-item low">⚠ POWER SURGE - EAST BLOCK</div>
+                    </div>
+                </div>
+
+                <div class="dash-panel">
+                    <h3 class="panel-title">MARKET PRICES</h3>
+                    <div class="price-ticker">
+                        <div class="ticker-item">
+                            <span>SYNTHCORP</span>
+                            <span class="price up">▲ 1,247₢</span>
+                        </div>
+                        <div class="ticker-item">
+                            <span>NEUROLINK</span>
+                            <span class="price down">▼ 892₢</span>
+                        </div>
+                        <div class="ticker-item">
+                            <span>GRID_SYS</span>
+                            <span class="price up">▲ 2,103₢</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secret Access Panel -->
+        <section id="access" class="section">
+            <div class="section-header">
+                <h2 class="section-title">// ACCESS_PANEL.SECURE</h2>
+                <div class="terminal-line"></div>
+            </div>
+            <div class="access-panels">
+                <div class="terminal-panel">
+                    <div class="terminal-header">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">ROOT_ACCESS</span>
+                    </div>
+                    <div class="terminal-body">
+                        <p class="terminal-line">$ ssh netrunner@nexus.grid</p>
+                        <p class="terminal-line">Password: ****************</p>
+                        <p class="terminal-line blink">ACCESS GRANTED_</p>
+                        <p class="terminal-line">> WARNING: Unauthorized access is a Class-3 felony</p>
+                        <p class="terminal-line">> Penalty: Full neural wipe</p>
+                        <p class="terminal-line green">> SYSTEM: Deep net access enabled</p>
+                        <p class="terminal-line">> Available nodes: 47</p>
+                    </div>
+                </div>
+
+                <div class="keypad-panel">
+                    <h3>SECURITY CLEARANCE</h3>
+                    <div class="keypad">
+                        <button class="key" aria-label="Key 1">1</button>
+                        <button class="key" aria-label="Key 2">2</button>
+                        <button class="key" aria-label="Key 3">3</button>
+                        <button class="key" aria-label="Key 4">4</button>
+                        <button class="key" aria-label="Key 5">5</button>
+                        <button class="key" aria-label="Key 6">6</button>
+                        <button class="key" aria-label="Key 7">7</button>
+                        <button class="key" aria-label="Key 8">8</button>
+                        <button class="key" aria-label="Key 9">9</button>
+                        <button class="key" aria-label="Key star">*</button>
+                        <button class="key" aria-label="Key 0">0</button>
+                        <button class="key" aria-label="Key hash">#</button>
+                    </div>
+                    <div class="access-display">
+                        <p>CLEARANCE LEVEL: <span class="level-badge">SIGMA-7</span></p>
+                    </div>
+                </div>
+
+                <div class="id-card">
+                    <div class="card-header">NEXUS IDENTIFICATION</div>
+                    <div class="card-body">
+                        <div class="id-photo">
+                            <div class="photo-placeholder">NO_IMG</div>
+                        </div>
+                        <div class="id-info">
+                            <p><strong>NAME:</strong> [REDACTED]</p>
+                            <p><strong>ID:</strong> NX-9347-DELTA</p>
+                            <p><strong>CLASS:</strong> NETRUNNER</p>
+                            <p><strong>AUGMENTS:</strong> 7 ACTIVE</p>
+                            <p><strong>STATUS:</strong> <span class="status-active">ACTIVE</span></p>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="barcode">|||||| || ||| |||| | |||||</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- City Districts Section -->
+        <section id="districts" class="section">
+            <div class="section-header">
+                <h2 class="section-title">// DISTRICT_MAP.DATA</h2>
+                <div class="terminal-line"></div>
+            </div>
+            <div class="districts-grid">
+                <div class="district-card">
+                    <div class="district-header">
+                        <h3>HIGHRISE_SECTOR</h3>
+                        <span class="district-tag">LUXURY</span>
+                    </div>
+                    <p class="district-desc">Where the corpo elite live in their sky-scraping penthouses. Armed security, clean streets, and prices that'll zero your account in seconds.</p>
+                    <div class="district-stats">
+                        <span class="stat">DANGER: LOW</span>
+                        <span class="stat">WEALTH: EXTREME</span>
+                    </div>
+                </div>
+
+                <div class="district-card">
+                    <div class="district-header">
+                        <h3>THE_GRID</h3>
+                        <span class="district-tag">COMMERCIAL</span>
+                    </div>
+                    <p class="district-desc">The beating heart of Neon Nexus. Markets, tech shops, and data brokers line every corner. If you need it, The Grid has it.</p>
+                    <div class="district-stats">
+                        <span class="stat">DANGER: MEDIUM</span>
+                        <span class="stat">WEALTH: HIGH</span>
+                    </div>
+                </div>
+
+                <div class="district-card">
+                    <div class="district-header">
+                        <h3>LOWTOWN</h3>
+                        <span class="district-tag danger">COMBAT_ZONE</span>
+                    </div>
+                    <p class="district-desc">The underbelly. Gang territory, black market clinics, and people with nothing to lose. Watch your back, choomba.</p>
+                    <div class="district-stats">
+                        <span class="stat danger">DANGER: EXTREME</span>
+                        <span class="stat">WEALTH: LOW</span>
+                    </div>
+                </div>
+
+                <div class="district-card">
+                    <div class="district-header">
+                        <h3>NEON_STRIP</h3>
+                        <span class="district-tag">ENTERTAINMENT</span>
+                    </div>
+                    <p class="district-desc">Clubs, bars, and braindance parlors. The Strip never sleeps and neither do its patrons. Bring eddies and leave your conscience at the door.</p>
+                    <div class="district-stats">
+                        <span class="stat">DANGER: MEDIUM</span>
+                        <span class="stat">WEALTH: MEDIUM</span>
+                    </div>
+                </div>
+
+                <div class="district-card">
+                    <div class="district-header">
+                        <h3>INDUSTRIAL_CORE</h3>
+                        <span class="district-tag">MANUFACTURING</span>
+                    </div>
+                    <p class="district-desc">Factories and refineries run 24/7. The air is toxic, the work is brutal, but the pay keeps people coming back.</p>
+                    <div class="district-stats">
+                        <span class="stat">DANGER: MEDIUM</span>
+                        <span class="stat">WEALTH: LOW</span>
+                    </div>
+                </div>
+
+                <div class="district-card">
+                    <div class="district-header">
+                        <h3>CYBER_DISTRICT</h3>
+                        <span class="district-tag">TECH_HUB</span>
+                    </div>
+                    <p class="district-desc">Where netrunners congregate. Fiber optic cables everywhere, access points on every corner. Your digital playground.</p>
+                    <div class="district-stats">
+                        <span class="stat">DANGER: LOW</span>
+                        <span class="stat">WEALTH: HIGH</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Local Slang Section -->
+        <section id="slang" class="section">
+            <div class="section-header">
+                <h2 class="section-title">// SLANG_DATABASE.TXT</h2>
+                <div class="terminal-line"></div>
+            </div>
+            <div class="slang-container">
+                <div class="slang-entry">
+                    <h3 class="slang-term">Choomba / Choom</h3>
+                    <p class="slang-def">Friend, buddy, or trusted associate. "What's the word, choom?"</p>
+                </div>
+                <div class="slang-entry">
+                    <h3 class="slang-term">Zeroed / Flatline</h3>
+                    <p class="slang-def">Killed, eliminated. "That gonk got zeroed trying to cross the Tigers."</p>
+                </div>
+                <div class="slang-entry">
+                    <h3 class="slang-term">Eddies / ₢</h3>
+                    <p class="slang-def">Money, credits. "I need 500 eddies for that chrome."</p>
+                </div>
+                <div class="slang-entry">
+                    <h3 class="slang-term">Corpo</h3>
+                    <p class="slang-def">Corporate employee or loyalist. Often used derogatorily.</p>
+                </div>
+                <div class="slang-entry">
+                    <h3 class="slang-term">Chrome</h3>
+                    <p class="slang-def">Cybernetic enhancements or augmentations. "Nice chrome, where'd you get it installed?"</p>
+                </div>
+                <div class="slang-entry">
+                    <h3 class="slang-term">Gonk</h3>
+                    <p class="slang-def">Idiot, fool, someone acting stupid. "Don't be a gonk."</p>
+                </div>
+                <div class="slang-entry">
+                    <h3 class="slang-term">Netrunner</h3>
+                    <p class="slang-def">A hacker, someone who navigates the Net and breaks through ICE.</p>
+                </div>
+                <div class="slang-entry">
+                    <h3 class="slang-term">ICE</h3>
+                    <p class="slang-def">Intrusion Countermeasures Electronics. Security software that protects systems.</p>
+                </div>
+                <div class="slang-entry">
+                    <h3 class="slang-term">Preem</h3>
+                    <p class="slang-def">Premium, excellent, top quality. "That's some preem gear you got there."</p>
+                </div>
+                <div class="slang-entry">
+                    <h3 class="slang-term">Ripperdoc</h3>
+                    <p class="slang-def">A surgeon specializing in installing cybernetic implants.</p>
+                </div>
+                <div class="slang-entry">
+                    <h3 class="slang-term">Braindance / BD</h3>
+                    <p class="slang-def">Recorded experiences you can play back and feel as if you lived them.</p>
+                </div>
+                <div class="slang-entry">
+                    <h3 class="slang-term">Input</h3>
+                    <p class="slang-def">Agreement, affirmative. "Input, I'm in on the job."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Food Stalls Section -->
+        <section id="food" class="section">
+            <div class="section-header">
+                <h2 class="section-title">// FOOD_VENDORS.DB</h2>
+                <div class="terminal-line"></div>
+            </div>
+            <div class="food-grid">
+                <div class="food-card">
+                    <div class="food-header">
+                        <h3>NOODLE NEXUS</h3>
+                        <div class="rating" aria-label="5 out of 5 stars">★★★★★</div>
+                    </div>
+                    <p class="food-location">Location: The Grid, Block 7</p>
+                    <p class="food-desc">Authentic synth-noodles with real flavor modules. The ramen here hits different after a long run.</p>
+                    <div class="food-price">Average: 25₢</div>
+                    <div class="food-tags">
+                        <span class="tag">OPEN 24/7</span>
+                        <span class="tag">VEGAN OPTIONS</span>
+                    </div>
+                </div>
+
+                <div class="food-card">
+                    <div class="food-header">
+                        <h3>CHROME BURGER</h3>
+                        <div class="rating" aria-label="4 out of 5 stars">★★★★☆</div>
+                    </div>
+                    <p class="food-location">Location: Neon Strip, Corner 3rd</p>
+                    <p class="food-desc">Lab-grown beef that tastes like the real thing. Their "Corpo Special" will fill you up for a whole shift.</p>
+                    <div class="food-price">Average: 35₢</div>
+                    <div class="food-tags">
+                        <span class="tag">PROTEIN BOOST</span>
+                        <span class="tag">TAKEOUT</span>
+                    </div>
+                </div>
+
+                <div class="food-card">
+                    <div class="food-header">
+                        <h3>SYNTH SUSHI</h3>
+                        <div class="rating" aria-label="5 out of 5 stars">★★★★★</div>
+                    </div>
+                    <p class="food-location">Location: Highrise Sector, Level 42</p>
+                    <p class="food-desc">Expensive but worth it. They use actual oceanic proteins. Corpo favorite.</p>
+                    <div class="food-price">Average: 120₢</div>
+                    <div class="food-tags">
+                        <span class="tag">PREMIUM</span>
+                        <span class="tag">RESERVATION REQ.</span>
+                    </div>
+                </div>
+
+                <div class="food-card">
+                    <div class="food-header">
+                        <h3>MAMA'S DUMPLINGS</h3>
+                        <div class="rating" aria-label="5 out of 5 stars">★★★★★</div>
+                    </div>
+                    <p class="food-location">Location: Lowtown, East Market</p>
+                    <p class="food-desc">Best bang for your eddies. Mama doesn't ask questions and the dumplings are preem.</p>
+                    <div class="food-price">Average: 15₢</div>
+                    <div class="food-tags">
+                        <span class="tag">CHEAP EATS</span>
+                        <span class="tag">CASH ONLY</span>
+                    </div>
+                </div>
+
+                <div class="food-card">
+                    <div class="food-header">
+                        <h3>CYBER CAFÉ</h3>
+                        <div class="rating" aria-label="4 out of 5 stars">★★★★☆</div>
+                    </div>
+                    <p class="food-location">Location: Cyber District, Data Hub</p>
+                    <p class="food-desc">Coffee, energy drinks, and focus-enhancing supplements. Free net access with purchase.</p>
+                    <div class="food-price">Average: 20₢</div>
+                    <div class="food-tags">
+                        <span class="tag">FREE WIFI</span>
+                        <span class="tag">QUIET</span>
+                    </div>
+                </div>
+
+                <div class="food-card">
+                    <div class="food-header">
+                        <h3>TACO TERMINUS</h3>
+                        <div class="rating" aria-label="3 out of 5 stars">★★★☆☆</div>
+                    </div>
+                    <p class="food-location">Location: Industrial Core, Gate 5</p>
+                    <p class="food-desc">Mystery meat tacos for factory workers. Don't ask what's in them, just eat.</p>
+                    <div class="food-price">Average: 10₢</div>
+                    <div class="food-tags">
+                        <span class="tag">QUICK SERVICE</span>
+                        <span class="tag">QUESTIONABLE</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Survival Tips Section -->
+        <section id="survival" class="section">
+            <div class="section-header">
+                <h2 class="section-title">// SURVIVAL_GUIDE.SYS</h2>
+                <div class="terminal-line"></div>
+            </div>
+            <div class="survival-content">
+                <div class="warning-box">
+                    <h3>⚠ HOW TO NOT GET ZEROED ⚠</h3>
+                    <p>Essential tips for staying alive in Neon Nexus</p>
+                </div>
+
+                <div class="survival-tips">
+                    <div class="tip-card">
+                        <div class="tip-number">01</div>
+                        <h4>Know Your District</h4>
+                        <p>Different areas, different rules. What works in Highrise will get you killed in Lowtown. Learn the local power structure before you make moves.</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-number">02</div>
+                        <h4>Trust No One Completely</h4>
+                        <p>Even your best choom might sell you out if the price is right. Keep your cards close and always have an exit plan.</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-number">03</div>
+                        <h4>Upgrade Your Chrome</h4>
+                        <p>Basic augments are the minimum. Get cybereyes for threat detection, dermal plating for protection, and a good neural processor for quick thinking.</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-number">04</div>
+                        <h4>Pay Your Debts</h4>
+                        <p>Borrowed eddies from a fixer? Pay them back on time. Interest rates are high, but the penalty for defaulting is higher - usually permanent.</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-number">05</div>
+                        <h4>Avoid Gang Territory</h4>
+                        <p>The Tigers, Claws, and Voodoo Boys all have their turf. Cross it uninvited and you're asking for trouble. If you must pass through, pay the toll.</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-number">06</div>
+                        <h4>Keep Your Net Secure</h4>
+                        <p>Netrunners can fry your brain through your neural link. Use quality firewalls and ICE. Cheap security is no security.</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-number">07</div>
+                        <h4>Never Trust A Corpo</h4>
+                        <p>They'll smile while stabbing you in the back. Every corpo deal has hidden clauses. Read the fine print or hire someone who can.</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-number">08</div>
+                        <h4>Carry Protection</h4>
+                        <p>Whether it's a blade, a piece, or just good combat chrome - never go unarmed. The streets are unforgiving to the defenseless.</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-number">09</div>
+                        <h4>Find a Ripperdoc You Trust</h4>
+                        <p>Cheap chrome installation leads to rejection, malfunction, or worse. A good ripperdoc is worth their weight in eddies.</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-number">10</div>
+                        <h4>Know When to Run</h4>
+                        <p>Pride is expensive in Neon Nexus. If a situation turns sour, extract immediately. Dead heroes don't collect payment.</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-number">11</div>
+                        <h4>Stay Off Corpo Radar</h4>
+                        <p>Once the big corps take interest in you, life gets complicated. Keep your head down, your profile low, and your work clean.</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-number">12</div>
+                        <h4>Learn the Slang</h4>
+                        <p>Talk like a tourist and you'll be marked as easy prey. Speak the language of the streets and you'll blend in with the locals.</p>
+                    </div>
+                </div>
+
+                <div class="footer-message">
+                    <p class="glitch-text">STAY SHARP. STAY ALIVE. WELCOME TO THE NEXUS.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>NEON NEXUS © 2087 | ALL RIGHTS RESERVED</p>
+            <p class="footer-warning">WARNING: Unauthorized data access is monitored and prosecuted</p>
+            <p class="footer-legal">This is a fictional website created for entertainment purposes</p>
+        </div>
+        <div class="scanline"></div>
+    </footer>
+
+</body>
+</html>
