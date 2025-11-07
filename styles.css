@@ -2,6 +2,9 @@
    NEON NEXUS - CYBERPUNK STYLESHEET
    ============================================ */
 
+/* Import funky font */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&display=swap');
+
 /* CSS Variables for Theme Colors */
 :root {
     --neon-cyan: #00ffff;
@@ -28,15 +31,59 @@
 }
 
 body {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Orbitron', 'Courier New', Courier, monospace;
     background-color: var(--dark-bg);
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
+    position: relative;
+    /* Cyberpunk city background with overlay */
     background-image: 
+        linear-gradient(rgba(10, 10, 15, 0.92), rgba(10, 10, 15, 0.92)),
+        linear-gradient(135deg, rgba(157, 0, 255, 0.1) 0%, transparent 50%, rgba(0, 255, 255, 0.1) 100%),
         linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
+    background-size: 100%, 100%, 50px 50px, 50px 50px;
+    background-attachment: fixed, fixed, scroll, scroll;
+}
+
+/* Animated gradient blinds background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 255, 255, 0.02) 2px,
+            rgba(0, 255, 255, 0.02) 4px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 0, 255, 0.02) 2px,
+            rgba(255, 0, 255, 0.02) 4px
+        );
+    pointer-events: none;
+    z-index: -1;
+    animation: gradientShift 20s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        opacity: 0.5;
+        background-position: 0% 0%, 0% 0%;
+    }
+    50% {
+        opacity: 0.8;
+        background-position: 100% 100%, 100% 100%;
+    }
 }
 
 /* Scrollbar Styling */
@@ -61,11 +108,45 @@ body {
 /* Header Styles */
 .main-header {
     text-align: center;
-    padding: 60px 20px 40px;
-    background: linear-gradient(180deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
-    border-bottom: 2px solid var(--neon-cyan);
+    padding: 80px 20px 50px;
+    background: 
+        linear-gradient(180deg, rgba(5, 5, 10, 0.95) 0%, rgba(10, 10, 15, 0.9) 100%),
+        radial-gradient(circle at 50% 50%, rgba(157, 0, 255, 0.2), transparent 70%);
+    border-bottom: 3px solid var(--neon-cyan);
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 10px 50px rgba(0, 255, 255, 0.3),
+        inset 0 0 100px rgba(0, 255, 255, 0.05);
+}
+
+/* Animated particles background */
+.main-header::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: 
+        radial-gradient(2px 2px at 20% 30%, var(--neon-cyan), transparent),
+        radial-gradient(2px 2px at 60% 70%, var(--neon-pink), transparent),
+        radial-gradient(1px 1px at 50% 50%, white, transparent),
+        radial-gradient(1px 1px at 80% 10%, var(--neon-purple), transparent);
+    background-size: 200% 200%;
+    animation: particleFloat 20s ease infinite;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+@keyframes particleFloat {
+    0%, 100% {
+        background-position: 0% 0%, 100% 100%, 50% 50%, 80% 10%;
+    }
+    50% {
+        background-position: 100% 100%, 0% 0%, 30% 70%, 20% 90%;
+    }
 }
 
 .glitch-container {
@@ -74,17 +155,40 @@ body {
 }
 
 .glitch {
-    font-size: 4rem;
-    font-weight: bold;
+    font-size: 5rem;
+    font-weight: 900;
     text-transform: uppercase;
     position: relative;
     color: var(--neon-cyan);
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 8px;
     text-shadow: 
         0 0 10px var(--neon-cyan),
         0 0 20px var(--neon-cyan),
         0 0 30px var(--neon-cyan),
-        0 0 40px var(--neon-pink);
-    animation: glitch 3s infinite;
+        0 0 40px var(--neon-pink),
+        0 0 70px var(--neon-pink),
+        0 0 80px var(--neon-pink);
+    animation: glitch 3s infinite, textGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+    from {
+        text-shadow: 
+            0 0 10px var(--neon-cyan),
+            0 0 20px var(--neon-cyan),
+            0 0 30px var(--neon-cyan),
+            0 0 40px var(--neon-pink);
+    }
+    to {
+        text-shadow: 
+            0 0 20px var(--neon-cyan),
+            0 0 30px var(--neon-cyan),
+            0 0 40px var(--neon-cyan),
+            0 0 50px var(--neon-pink),
+            0 0 70px var(--neon-pink),
+            0 0 100px var(--neon-pink);
+    }
 }
 
 @keyframes glitch {
@@ -180,27 +284,74 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 5px;
-    padding: 20px;
-    background: var(--panel-bg);
+    gap: 15px;
+    padding: 30px;
+    background: rgba(26, 26, 46, 0.6);
+    backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3);
+    box-shadow: 
+        0 4px 20px rgba(0, 255, 255, 0.3),
+        inset 0 0 60px rgba(0, 255, 255, 0.05);
+    /* Fluid glass effect */
+    border-radius: 0;
+    position: relative;
+}
+
+/* Electric border effect for navigation */
+.main-nav::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(
+        90deg,
+        var(--neon-cyan),
+        var(--neon-pink),
+        var(--neon-purple),
+        var(--neon-cyan)
+    );
+    background-size: 300% 300%;
+    animation: electricBorder 3s linear infinite;
+    z-index: -1;
+    opacity: 0.6;
+}
+
+@keyframes electricBorder {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .nav-link {
     color: var(--neon-cyan);
     text-decoration: none;
-    padding: 10px 20px;
-    border: 1px solid var(--neon-cyan);
-    background: transparent;
+    padding: 12px 24px;
+    border: 2px solid var(--neon-cyan);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
     transition: all 0.3s ease;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
     position: relative;
     overflow: hidden;
+    border-radius: 4px;
+    text-transform: uppercase;
+    /* Fluid glass effect */
+    box-shadow: 
+        0 4px 15px rgba(0, 255, 255, 0.2),
+        inset 0 0 20px rgba(0, 255, 255, 0.05);
 }
 
 .nav-link::before {
@@ -241,31 +392,68 @@ body {
 .section {
     margin: 60px 0;
     padding: 40px;
-    background: rgba(26, 26, 46, 0.6);
+    background: rgba(26, 26, 46, 0.5);
+    backdrop-filter: blur(10px);
     border: 1px solid var(--border-color);
-    border-radius: 5px;
+    border-radius: 8px;
     box-shadow: 
         0 0 20px rgba(0, 255, 255, 0.2),
         inset 0 0 20px rgba(0, 255, 255, 0.05);
     position: relative;
+    /* Fluid glass morphism effect */
 }
 
+/* Electric animated border for sections */
 .section::before {
     content: '';
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink), var(--neon-purple));
-    border-radius: 5px;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(
+        45deg,
+        var(--neon-cyan),
+        var(--neon-pink),
+        var(--neon-purple),
+        var(--neon-blue),
+        var(--neon-cyan)
+    );
+    background-size: 400% 400%;
+    border-radius: 8px;
     z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    opacity: 0.4;
+    animation: electricBorderSlow 8s ease infinite;
+    filter: blur(2px);
+}
+
+@keyframes electricBorderSlow {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 100% 50%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    75% {
+        background-position: 0% 100%;
+    }
 }
 
 .section:hover::before {
-    opacity: 0.3;
+    opacity: 0.7;
+    animation: electricBorderFast 2s ease infinite;
+}
+
+@keyframes electricBorderFast {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 .section-header {

@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeTypingEffect();
     initializeInteractiveElements();
     setupReducedMotionListener();
+    initializeASCIITextEffects();
 });
 
 // ============================================
@@ -508,4 +509,66 @@ function enableAnimations() {
             }
         }, 10000);
     }
+}
+
+// ============================================
+// ASCII TEXT EFFECTS
+// ============================================
+function initializeASCIITextEffects() {
+    const sectionTitles = document.querySelectorAll('.section-title');
+    
+    sectionTitles.forEach((title, index) => {
+        const originalText = title.textContent;
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*+-=<>[]{}|/\\';
+        
+        // Add hover effect for ASCII scramble
+        title.addEventListener('mouseenter', function() {
+            let iterations = 0;
+            const maxIterations = originalText.length;
+            
+            const asciiInterval = setInterval(() => {
+                title.textContent = originalText
+                    .split('')
+                    .map((char, idx) => {
+                        if (idx < iterations) {
+                            return originalText[idx];
+                        }
+                        if (char === ' ') return ' ';
+                        return chars[Math.floor(Math.random() * chars.length)];
+                    })
+                    .join('');
+                
+                iterations += 1/3;
+                
+                if (iterations >= maxIterations) {
+                    clearInterval(asciiInterval);
+                    title.textContent = originalText;
+                }
+            }, 30);
+        });
+        
+        // Staggered reveal animation on page load
+        setTimeout(() => {
+            let iterations = 0;
+            const revealInterval = setInterval(() => {
+                title.textContent = originalText
+                    .split('')
+                    .map((char, idx) => {
+                        if (idx < iterations) {
+                            return originalText[idx];
+                        }
+                        if (char === ' ' || char === '/' || char === '.') return char;
+                        return chars[Math.floor(Math.random() * chars.length)];
+                    })
+                    .join('');
+                
+                iterations += 0.5;
+                
+                if (iterations >= originalText.length) {
+                    clearInterval(revealInterval);
+                    title.textContent = originalText;
+                }
+            }, 50);
+        }, index * 200);
+    });
 }
