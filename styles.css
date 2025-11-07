@@ -1082,8 +1082,14 @@ body {
     .glitch,
     .scanline,
     .progress-fill,
-    .section {
+    .section,
+    .threat-item.critical,
+    .terminal-line.blink {
         animation: none !important;
+    }
+    
+    .threat-item.critical {
+        opacity: 1 !important;
     }
     
     .section,
