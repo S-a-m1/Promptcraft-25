@@ -2,6 +2,15 @@
 // NEON NEXUS - CYBERPUNK JAVASCRIPT
 // ============================================
 
+// Global interval IDs for cleanup
+const intervals = {
+    matrix: null,
+    dashboard: null,
+    glitch: null,
+    time: null,
+    cursor: null
+};
+
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
     initializeEffects();
@@ -10,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeMatrixRain();
     initializeTypingEffect();
     initializeInteractiveElements();
+    setupReducedMotionListener();
 });
 
 // ============================================
@@ -55,12 +65,16 @@ function initializeMatrixRain() {
         }
     }
 
-    setInterval(drawMatrix, 50);
+    intervals.matrix = setInterval(drawMatrix, 50);
 
-    // Resize handler
+    // Resize handler with debounce
+    let resizeTimeout;
     window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }, 250);
     });
 }
 
@@ -149,7 +163,7 @@ function initializeDashboard() {
     animateProgressBars();
     
     // Update values periodically
-    setInterval(updateDashboardValues, 5000);
+    intervals.dashboard = setInterval(updateDashboardValues, 5000);
     
     // Animate threat items
     animateThreatItems();
@@ -192,12 +206,12 @@ function updateDashboardValues() {
     }
     
     // Update population metrics with animation
-    updateMetricValue('.metric:nth-child(1) .metric-value', '12.4M', ['12.3M', '12.4M', '12.5M']);
-    updateMetricValue('.metric:nth-child(2) .metric-value', '89.3%', ['89.1%', '89.3%', '89.5%']);
-    updateMetricValue('.metric:nth-child(3) .metric-value', '47.2K', ['46.9K', '47.2K', '47.5K']);
+    updateMetricValue('.metric:nth-child(1) .metric-value', ['12.3M', '12.4M', '12.5M']);
+    updateMetricValue('.metric:nth-child(2) .metric-value', ['89.1%', '89.3%', '89.5%']);
+    updateMetricValue('.metric:nth-child(3) .metric-value', ['46.9K', '47.2K', '47.5K']);
 }
 
-function updateMetricValue(selector, defaultValue, values) {
+function updateMetricValue(selector, values) {
     const element = document.querySelector(selector);
     if (!element) return;
     
@@ -272,7 +286,7 @@ function initializeInteractiveElements() {
     const terminalLines = document.querySelectorAll('.terminal-body .terminal-line');
     if (terminalLines.length > 0) {
         const lastLine = terminalLines[terminalLines.length - 1];
-        setInterval(() => {
+        intervals.cursor = setInterval(() => {
             if (lastLine.textContent.endsWith('_')) {
                 lastLine.textContent = lastLine.textContent.slice(0, -1);
             } else {
@@ -303,7 +317,7 @@ function initializeEffects() {
     });
     
     // Random glitch on sections
-    setInterval(() => {
+    intervals.glitch = setInterval(() => {
         const sections = document.querySelectorAll('.section-title');
         if (sections.length > 0) {
             const randomSection = sections[Math.floor(Math.random() * sections.length)];
@@ -389,7 +403,7 @@ function initializeEffects() {
     }
     
     updateTime();
-    setInterval(updateTime, 1000);
+    intervals.time = setInterval(updateTime, 1000);
     footer.insertBefore(timeDisplay, footer.firstChild);
 })();
 
@@ -409,14 +423,61 @@ window.addEventListener('resize', () => {
 // ============================================
 // PERFORMANCE OPTIMIZATION
 // ============================================
-// Respect prefers-reduced-motion
-if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+// Setup reduced motion listener
+function setupReducedMotionListener() {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    
+    function handleReducedMotion(e) {
+        if (e.matches) {
+            disableAnimations();
+        } else {
+            enableAnimations();
+        }
+    }
+    
+    // Check initial state
+    handleReducedMotion(mediaQuery);
+    
+    // Listen for changes
+    mediaQuery.addEventListener('change', handleReducedMotion);
+}
+
+function disableAnimations() {
     // Disable matrix rain
     const canvas = document.getElementById('matrix-canvas');
     if (canvas) {
         canvas.style.display = 'none';
     }
     
-    // Disable auto-updating dashboard
-    console.log('Reduced motion mode: Some animations disabled');
+    // Clear all intervals
+    if (intervals.matrix) clearInterval(intervals.matrix);
+    if (intervals.dashboard) clearInterval(intervals.dashboard);
+    if (intervals.glitch) clearInterval(intervals.glitch);
+    
+    console.log('Reduced motion mode: Animations disabled');
+}
+
+function enableAnimations() {
+    // Re-enable matrix rain
+    const canvas = document.getElementById('matrix-canvas');
+    if (canvas) {
+        canvas.style.display = 'block';
+    }
+    
+    // Restart intervals if they were stopped
+    if (!intervals.dashboard) {
+        intervals.dashboard = setInterval(updateDashboardValues, 5000);
+    }
+    if (!intervals.glitch) {
+        intervals.glitch = setInterval(() => {
+            const sections = document.querySelectorAll('.section-title');
+            if (sections.length > 0) {
+                const randomSection = sections[Math.floor(Math.random() * sections.length)];
+                randomSection.style.animation = 'glitch 0.3s';
+                setTimeout(() => {
+                    randomSection.style.animation = '';
+                }, 300);
+            }
+        }, 10000);
+    }
 }
